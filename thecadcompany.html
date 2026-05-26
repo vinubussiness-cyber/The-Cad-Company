@@ -40,7 +40,7 @@
     border-bottom: 1px solid var(--bordergray);
     transition: all 0.3s;
   }
-  .nav-logo img { height: 44px; width: auto; object-fit: contain; filter: brightness(1); }
+  .nav-logo img { height: 50px; width: 50px; object-fit: contain; filter: brightness(1); }
   .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--white); }
@@ -124,7 +124,7 @@
 
   /* ── ABOUT ── */
   #about { background: var(--dark); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  .about-grid { display: grid; grid-template-columns: 1fr ; gap: 100px; align-items: center; }
   .about-visual {
     position: relative; aspect-ratio: 1/1;
     border: 1px solid var(--bordergray);
@@ -203,7 +203,7 @@
 
   /* ── METRICS / WHY ── */
   #why { background: var(--dark); }
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+  .why-grid { display: grid; grid-template-columns: 1fr ; gap: 100px; align-items: center; }
   .why-list { display: flex; flex-direction: column; }
   .why-item { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--bordergray); }
   .why-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--bordergray); line-height: 1; flex-shrink: 0; width: 52px; }
@@ -274,7 +274,7 @@
   @media (max-width: 900px) {
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
-    .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr;  }
     .services-grid { grid-template-columns: 1fr; }
     .testi-grid { grid-template-columns: 1fr; }
     .hero-stats { gap: 32px; flex-wrap: wrap; }
@@ -309,18 +309,29 @@
   /* Mobile menu */
   #mobileMenu { display:none; position:fixed; inset:0; background:rgba(10,10,10,0.99); z-index:99; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
   #mobileMenu a { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--white); text-decoration:none; letter-spacing:2px; }
+
+  .TCC-logo{
+    object-fit: cover;
+    height: 70px;
+    width: 70px;
+  }
+
+   .cdet-val a{
+      text-decoration: none;
+      color: var(--light)
+   }
 </style>
 </head>
 <body>
 
 <!-- LOADER -->
 <div class="page-loader" id="loader">
-  <div class="loader-logo"><img src="data:image/jpeg;base64,LOGO_BASE64" alt="The CAD Company"></div>
+  <div class="loader-logo"><img src="TCC-logo.jpeg" alt="The CAD Company"></div>
 </div>
 
 <!-- CURSOR -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<!-- <div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div> -->
 
 <!-- MOBILE MENU -->
 <div id="mobileMenu">
@@ -333,7 +344,7 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="#hero" class="nav-logo"><img src="data:image/jpeg;base64,LOGO_BASE64" alt="The CAD Company"></a>
+  <a href="#hero" class="nav-logo"><img class="TCC-logo" src="TCC-logo.jpeg" alt="The CAD Company"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -414,7 +425,7 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
-    <div class="about-visual">
+    <!-- <div class="about-visual">
       <div class="corner-mark tl"></div>
       <div class="corner-mark tr"></div>
       <div class="corner-mark bl"></div>
@@ -424,7 +435,7 @@
         <img src="data:image/jpeg;base64,LOGO_BASE64" alt="The CAD Company">
         <div class="about-tagline">Design the Future</div>
       </div>
-    </div>
+    </div> -->
     <div>
       <span class="section-tag">Who We Are</span>
       <h2 class="section-title">BUILT ON<br>BLUEPRINTS</h2>
@@ -641,7 +652,7 @@
         </div>
       </div>
     </div>
-    <div>
+    <!-- <div>
       <div class="metrics-panel">
         <div class="metrics-panel-title">Performance Metrics</div>
         <div class="metric-bar">
@@ -664,7 +675,7 @@
           <span class="stag">SolidWorks</span><span class="stag">AutoCAD</span><span class="stag">CATIA</span><span class="stag">Revit</span><span class="stag">ANSYS</span><span class="stag">3ds Max</span><span class="stag">SketchUp</span><span class="stag">NX Unigraphics</span>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -728,13 +739,21 @@
       <div class="contact-detail reveal">
         <div>
           <div class="cdet-label">Phone</div>
-          <div class="cdet-val">+91 XX XXXX XXXX</div>
+          <div class="cdet-val">
+              <a href="tel:+ 9345888899">
+                +91 9345888899
+              </a>
+            </div>
         </div>
       </div>
       <div class="contact-detail reveal">
         <div>
           <div class="cdet-label">Email</div>
-          <div class="cdet-val">info@thecadcompany.in</div>
+          <div class="cdet-val">
+            <a href="mailto:info@thecadcompany.in">
+              info@thecadcompany.in
+            </a>
+          </div>
         </div>
       </div>
       <div class="contact-detail reveal">
@@ -802,7 +821,7 @@
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo"><img src="data:image/jpeg;base64,LOGO_BASE64" alt="The CAD Company"></div>
+      <div class="footer-logo"><img class="TCC-logo" src="TCC-logo.jpeg" alt="The CAD Company"></div>
       <p class="footer-brand" style="font-size:13px;color:var(--muted);line-height:1.8;max-width:260px;">Precision engineering and design services for industrial and architectural sectors. Based in Chennai, serving clients across India and globally.</p>
     </div>
     <div class="footer-col">
