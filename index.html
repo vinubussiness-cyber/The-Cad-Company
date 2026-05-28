@@ -57,7 +57,7 @@
   .hamburger span { width: 24px; height: 1px; background: var(--white); transition: 0.3s; }
 
   /* ── HERO ── */
-  #hero { min-height: 100vh; display: flex; align-items: center; padding: 20px 5vw 30px; position: relative; overflow: hidden; background: var(--black); }
+  #hero { min-height: 100vh; display: flex; align-items: center; padding: 85px 5vw 60px; position: relative; overflow: hidden; background: var(--black); }
 
   /* Animated grid */
   .hero-grid {
@@ -298,7 +298,24 @@
   .float-btn:hover { transform: translateY(-3px); background: var(--light); }
 
   /* ── LOADING ANIMATION ── */
-  .page-loader { position: fixed; inset: 0; background: var(--black); z-index: 999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s, visibility 0.5s; }
+  /* .page-loader { position: fixed; inset: 0; background: var(--black); z-index: 999; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s, visibility 0.5s; } */
+  .page-loader {
+  position: fixed;
+  inset: 0;
+  background: #000;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.loader-logo video {
+  width: 120px;          /* same size as your old logo */
+  height: 120px;
+  object-fit: contain;   /* keeps aspect ratio */
+  animation: fadeScale 1.5s ease-in-out infinite;
+}
+
   .page-loader.done { opacity: 0; visibility: hidden; }
   .loader-logo { animation: loaderPulse 0.8s ease-in-out infinite alternate; }
   .loader-logo img { height: 60px; filter: brightness(0.5); }
@@ -324,7 +341,12 @@
 
 <!-- LOADER -->
 <div class="page-loader" id="loader">
-  <div class="loader-logo"><img src="TCC-logo.jpeg" alt="The CAD Company"></div>
+  <div class="loader-logo">
+    <!-- <img src="TCC-logo.jpeg" alt="The CAD Company"> -->
+     <video autoplay loop muted playinline>
+        <source src="cx.mp4" type="video/mp4">
+     </video>
+  </div>
 </div>
 
 <!-- CURSOR -->
