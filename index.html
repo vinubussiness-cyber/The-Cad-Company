@@ -6,6 +6,7 @@
 <title>The CAD Company | Engineering & Design Services, Chennai</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
   :root {
     --black: #0A0A0A;
@@ -43,7 +44,7 @@
 
   .nav-logo {
     justify-content: center; align-items: center;
-    font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; 
+    font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--offwhite); text-decoration: none; transition: color 0.2s; 
   }
 
   .nav-logo img { height: 50px; width: 50px; object-fit: contain; filter: brightness(1); }
@@ -82,16 +83,7 @@
   @keyframes orbFloat2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-20px, -30px) scale(1.05); } }
 
   .hero-content { position: relative; z-index: 1; max-width: 800px; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 10px;
-    border: 1px solid var(--bordergray); padding: 6px 18px;
-    border-radius: 0; font-size: 11px; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--silver); margin-bottom: 40px; font-weight: 500;
-    animation: fadeSlideDown 0.8s ease forwards; opacity: 0;
-  }
-  .hero-badge::before { content: ''; width: 5px; height: 5px; background: var(--white); border-radius: 50%; animation: blink 2s infinite; }
-  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
-  @keyframes fadeSlideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+ 
 
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
@@ -373,7 +365,6 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="hero-content">
-    <div class="hero-badge">Chennai, Tamil Nadu · Engineering Excellence</div>
     <h1 class="hero-title">
       PRECISION<br>
       <span class="italic-word">Engineering</span><br>
@@ -397,10 +388,10 @@
         <div class="stat-num" data-count="6">0</div>
         <div class="stat-lbl">Industry Sectors</div>
       </div>
-      <div>
+      <!-- <div>
         <div class="stat-num" data-count="98">0%</div>
         <div class="stat-lbl">Client Satisfaction</div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -551,7 +542,7 @@
     </div>
     <p class="section-sub">Deep domain expertise across six critical industries that demand precision, reliability, and innovation.</p>
   </div>
-  <div class="industries-row">
+  <!-- <div class="industries-row">
     <div class="industry-card reveal">
       <div class="ind-icon-wrap">🚗</div>
       <div class="ind-name">Automotive</div>
@@ -582,7 +573,45 @@
       <div class="ind-name">Commercial</div>
       <div class="ind-sub">Offices, retail & institutions</div>
     </div>
+  </div> -->
+
+  <div class="industries-row">
+  <div class="industry-card reveal">
+    <div class="ind-icon-wrap"><i class="fa-solid fa-car"></i></div>
+    <div class="ind-name">Automotive</div>
+    <div class="ind-sub">Body, chassis & powertrain design</div>
   </div>
+
+  <div class="industry-card reveal">
+    <div class="ind-icon-wrap"><i class="fa-solid fa-plane"></i></div>
+    <div class="ind-name">Aerospace</div>
+    <div class="ind-sub">Structural & systems design</div>
+  </div>
+
+  <div class="industry-card reveal">
+    <div class="ind-icon-wrap"><i class="fa-solid fa-industry"></i></div>
+    <div class="ind-name">Industrial</div>
+    <div class="ind-sub">Machine & equipment design</div>
+  </div>
+
+  <div class="industry-card reveal">
+    <div class="ind-icon-wrap"><i class="fa-solid fa-robot"></i></div>
+    <div class="ind-name">Automation</div>
+    <div class="ind-sub">Jigs, fixtures & robotics</div>
+  </div>
+
+  <div class="industry-card reveal">
+    <div class="ind-icon-wrap"><i class="fa-solid fa-house"></i></div>
+    <div class="ind-name">Residential</div>
+    <div class="ind-sub">Homes, villas & apartments</div>
+  </div>
+
+  <div class="industry-card reveal">
+    <div class="ind-icon-wrap"><i class="fa-solid fa-building"></i></div>
+    <div class="ind-name">Commercial</div>
+    <div class="ind-sub">Offices, retail & institutions</div>
+  </div>
+</div>
 </section>
 
 <!-- PROCESS -->
@@ -756,8 +785,8 @@
         <div>
           <div class="cdet-label">Email</div>
           <div class="cdet-val">
-            <a href="mailto:info@thecadcompany.in">
-              info@thecadcompany.in
+            <a href="mailto:admin@thecadcompany.in">
+              admin@thecadcompany.in
             </a>
           </div>
         </div>
