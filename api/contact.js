@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { name, email, phone, company, service, message } = req.body;
+    const { name, email, phone, company, service, description } = req.body;
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: "admin@thecadcompany.in",
-      subject: "New Website Enquiry",
+      subject: "Hey S balls, you have New Website Enquiry 🙂‍↔️",
       html: `
         <h3>New Lead</h3>
         <p>Name: ${name}</p>
@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         <p>Phone: ${phone}</p>
         <p>Company: ${company}</p>
         <p>Service: ${service}</p>
-        <p>Message: ${message}</p>
+        <p>Message: ${description}</p>
       `,
     });
 

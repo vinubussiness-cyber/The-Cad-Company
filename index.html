@@ -841,7 +841,7 @@
           <label>Project Description</label>
           <textarea placeholder="Tell us about your project, industry, timeline, and specific requirements..."></textarea>
         </div>
-        <button type="submit" class="btn-submit" onclick="handleSubmit()">Send Enquiry →</button>
+        <button type="submit" class="btn-submit">Send Enquiry →</button>
       </div>
     </form>
   </div>
@@ -979,18 +979,15 @@ window.addEventListener('scroll', () => {
 });
 
 // Form submit
-function handleSubmit() {
-  
-
   document.getElementById('contactForm').addEventListener('submit', async(e) => {
     e.preventDefault();
 
     const formData  = {
       name: document.querySelector('input[placeholder="Full name"]').value,
       email: document.querySelector('input[type="email"]').value,
-      phNo: document.querySelector('input[type="tel"]').value,
-      client_company: document.querySelector('input[placeholder="optional"]').value,
-      service_required: document.querySelector('select').value,
+      phone: document.querySelector('input[type="tel"]').value,
+      company: document.querySelector('input[placeholder="Optional"]').value,
+      service: document.querySelector('select').value,
       description: document.querySelector('textarea').value
     };
 
@@ -1010,7 +1007,7 @@ function handleSubmit() {
     }
   })
 
-}
+
 </script>
 </body>
 </html>
