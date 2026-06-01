@@ -1,0 +1,1057 @@
+bash
+
+cat > /mnt/user-data/outputs/thecadcompany_v3.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cad Company</title>
+<link rel="icon" type="image/svg+xml" href="./TCC-logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+  :root {
+    --black: #0A0A0A;
+    --dark: #111111;
+    --darkgray: #1A1A1A;
+    --midgray: #2A2A2A;
+    --bordergray: #2E2E2E;
+    --muted: #666666;
+    --silver: #999999;
+    --light: #CCCCCC;
+    --offwhite: #F0EFEB;
+    --white: #FFFFFF;
+    --accent: #FFFFFF;
+    --accentglow: rgba(255,255,255,0.08);
+    --success: #4ade80;
+    --error: #f87171;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--midgray); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw; height: 76px;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--bordergray);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center;
+    font-size: 12px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--offwhite); text-decoration: none;
+    transition: color 0.2s; gap: 12px;
+  }
+  .nav-logo img { height: 50px; width: 50px; object-fit: contain; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-logo:hover { color: var(--white); }
+  .nav-cta { background: var(--white); color: var(--black); border: none; padding: 10px 24px; border-radius: 2px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 1px; cursor: pointer; text-decoration: none; text-transform: uppercase; transition: all 0.2s; }
+  .nav-cta:hover { background: var(--light); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 1px; background: var(--white); transition: 0.3s; }
+
+  /* ── HERO ── */
+  #hero { min-height: 100vh; display: flex; align-items: center; padding: 85px 5vw 60px; position: relative; overflow: hidden; background: var(--black); }
+  .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 80px 80px; animation: gridPan 30s linear infinite; }
+  @keyframes gridPan { from { background-position: 0 0; } to { background-position: 80px 80px; } }
+  .hero-noise { position: absolute; inset: 0; z-index: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 256px 256px; }
+  .orb { position: absolute; border-radius: 50%; pointer-events: none; }
+  .orb-1 { width: 500px; height: 500px; top: -100px; right: -100px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); animation: orbFloat1 8s ease-in-out infinite alternate; }
+  .orb-2 { width: 300px; height: 300px; bottom: 100px; left: 100px; background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); animation: orbFloat2 6s ease-in-out infinite alternate; }
+  @keyframes orbFloat1 { from { transform: translate(0,0) scale(1); } to { transform: translate(30px, 40px) scale(1.1); } }
+  @keyframes orbFloat2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-20px, -30px) scale(1.05); } }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(68px, 10vw, 140px); line-height: 0.9; letter-spacing: 3px; margin-bottom: 25px; animation: fadeSlideUp 0.9s 0.2s ease forwards; opacity: 0; }
+  .hero-title .italic-word { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--silver); font-size: 0.85em; }
+  @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.8; max-width: 520px; margin-bottom: 48px; font-weight: 300; animation: fadeSlideUp 0.9s 0.4s ease forwards; opacity: 0; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeSlideUp 0.9s 0.6s ease forwards; opacity: 0; }
+  .btn-primary { background: var(--white); color: var(--black); padding: 15px 36px; border-radius: 0; font-weight: 700; text-decoration: none; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.2s; display: inline-block; }
+  .btn-primary:hover { background: var(--light); transform: translateY(-2px); }
+  .btn-outline { border: 1px solid var(--bordergray); color: var(--silver); padding: 15px 36px; border-radius: 0; font-weight: 500; text-decoration: none; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--white); color: var(--white); }
+  .hero-stats { display: flex; gap: 60px; margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--bordergray); animation: fadeSlideUp 0.9s 0.8s ease forwards; opacity: 0; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: var(--white); line-height: 1; }
+  .stat-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap { background: var(--darkgray); border-top: 1px solid var(--bordergray); border-bottom: 1px solid var(--bordergray); overflow: hidden; padding: 0; white-space: nowrap; }
+  .marquee-track { display: inline-flex; animation: marqueeScroll 20s linear infinite; }
+  .marquee-item { padding: 18px 48px; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); border-right: 1px solid var(--bordergray); font-weight: 500; }
+  .marquee-item span { color: var(--white); }
+  @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION BASE ── */
+  section { padding: 120px 5vw; }
+  .section-tag { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--silver); font-weight: 600; margin-bottom: 16px; display: block; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 6vw, 80px); line-height: 0.92; letter-spacing: 2px; margin-bottom: 24px; }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 500px; font-weight: 300; }
+  .section-header { margin-bottom: 72px; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--dark); }
+  .about-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
+  .about-pillar { display: flex; gap: 20px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid var(--bordergray); }
+  .pillar-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--bordergray); line-height: 1; flex-shrink: 0; width: 40px; }
+  .pillar-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; letter-spacing: 0.3px; }
+  .pillar-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--black); }
+  .services-tabs { display: flex; gap: 0; margin-bottom: 56px; border: 1px solid var(--bordergray); width: fit-content; }
+  .tab-btn { padding: 12px 28px; border: none; background: transparent; color: var(--muted); font-size: 11px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; letter-spacing: 1.5px; text-transform: uppercase; border-right: 1px solid var(--bordergray); }
+  .tab-btn:last-child { border-right: none; }
+  .tab-btn:hover { color: var(--white); background: var(--accentglow); }
+  .tab-btn.active { background: var(--white); color: var(--black); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--bordergray); }
+  .service-card { background: var(--dark); padding: 40px 32px; transition: background 0.25s; cursor: default; display: none; }
+  .service-card.visible { display: block; }
+  .service-card:hover { background: var(--darkgray); }
+  .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--bordergray); line-height: 1; margin-bottom: 20px; }
+  .service-name { font-weight: 700; font-size: 16px; margin-bottom: 12px; letter-spacing: 0.3px; }
+  .service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+  .stag { font-size: 10px; padding: 4px 12px; background: var(--midgray); color: var(--silver); letter-spacing: 0.5px; text-transform: uppercase; }
+
+  /* ── INDUSTRIES ── */
+  #industries { background: var(--dark); }
+  .ind-header-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
+  .industries-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--bordergray); }
+  .industry-card { background: var(--dark); padding: 40px 24px; text-align: center; transition: background 0.2s; cursor: default; }
+  .industry-card:hover { background: var(--darkgray); }
+  .ind-icon-wrap { width: 56px; height: 56px; border: 1px solid var(--bordergray); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 22px; transition: border-color 0.2s; color: var(--silver); }
+  .industry-card:hover .ind-icon-wrap { border-color: var(--white); color: var(--white); }
+  .ind-name { font-weight: 700; font-size: 13px; color: var(--white); margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .ind-sub { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+  /* ── PROCESS ── */
+  #process { background: var(--black); }
+  .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--bordergray); }
+  .process-step { background: var(--dark); padding: 40px 28px; transition: background 0.2s; }
+  .process-step:hover { background: var(--darkgray); }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: var(--bordergray); line-height: 1; margin-bottom: 24px; }
+  .step-title { font-weight: 700; font-size: 14px; margin-bottom: 10px; letter-spacing: 0.3px; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* ── WHY ── */
+  #why { background: var(--dark); }
+  .why-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
+  .why-list { display: flex; flex-direction: column; }
+  .why-item { display: flex; gap: 24px; align-items: flex-start; padding: 28px 0; border-bottom: 1px solid var(--bordergray); }
+  .why-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--bordergray); line-height: 1; flex-shrink: 0; width: 52px; }
+  .why-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+  .why-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--black); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--bordergray); }
+  .testi-card { background: var(--dark); padding: 40px; transition: background 0.2s; }
+  .testi-card:hover { background: var(--darkgray); }
+  .testi-stars { font-size: 14px; letter-spacing: 2px; margin-bottom: 20px; }
+  .testi-text { font-size: 14px; color: var(--light); line-height: 1.8; font-style: italic; margin-bottom: 28px; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar { width: 40px; height: 40px; border: 1px solid var(--bordergray); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: var(--silver); background: var(--darkgray); flex-shrink: 0; }
+  .testi-name { font-weight: 700; font-size: 13px; letter-spacing: 0.3px; }
+  .testi-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--dark); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 100px; }
+  .contact-info { display: flex; flex-direction: column; gap: 0; }
+  .contact-detail { display: flex; gap: 20px; align-items: flex-start; padding: 24px 0; border-bottom: 1px solid var(--bordergray); }
+  .cdet-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+  .cdet-val { font-size: 14px; font-weight: 500; line-height: 1.6; color: var(--light); }
+  .cdet-val a { text-decoration: none; color: var(--light); transition: color 0.2s; }
+  .cdet-val a:hover { color: var(--white); }
+  .contact-form { border: 1px solid var(--bordergray); padding: 48px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 10px; font-weight: 600; }
+  input, select, textarea { width: 100%; background: var(--black); border: 1px solid var(--bordergray); border-radius: 0; padding: 13px 16px; color: var(--white); font-family: 'Inter', sans-serif; font-size: 13px; transition: border-color 0.2s; outline: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--white); }
+  select option { background: var(--black); }
+  textarea { resize: vertical; min-height: 110px; }
+
+  /* ── SUBMIT BUTTON STATES ── */
+  .btn-submit {
+    width: 100%; background: var(--white); color: var(--black);
+    border: none; padding: 16px; font-family: 'Inter', sans-serif;
+    font-weight: 700; font-size: 12px; cursor: pointer; letter-spacing: 2px;
+    text-transform: uppercase; transition: all 0.25s; margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    position: relative; overflow: hidden;
+  }
+  .btn-submit:hover:not(:disabled) { background: var(--light); }
+  .btn-submit:disabled { cursor: not-allowed; opacity: 0.7; }
+  .btn-submit.loading { background: var(--midgray); color: var(--silver); }
+  .btn-submit.success { background: #166534; color: #bbf7d0; }
+  .btn-submit.error-state { background: #7f1d1d; color: #fecaca; }
+
+  /* Spinner */
+  .spinner {
+    width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.2);
+    border-top-color: var(--black); border-radius: 50%;
+    animation: spin 0.7s linear infinite; display: none;
+  }
+  .btn-submit.loading .spinner { display: block; border-top-color: var(--silver); border-color: rgba(255,255,255,0.1); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Toast notification */
+  .toast {
+    position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+    padding: 16px 28px; border-radius: 2px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.5px; z-index: 9999; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex; align-items: center; gap: 10px; min-width: 300px; justify-content: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.success { background: #166534; color: #bbf7d0; border: 1px solid #15803d; }
+  .toast.error { background: #7f1d1d; color: #fecaca; border: 1px solid #991b1b; }
+
+  /* Form validation highlights */
+  input.invalid, select.invalid, textarea.invalid {
+    border-color: var(--error) !important;
+    animation: shake 0.3s ease;
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+  .field-error { font-size: 10px; color: var(--error); margin-top: 5px; letter-spacing: 0.5px; display: none; }
+  .field-error.show { display: block; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--black); padding: 72px 5vw 40px; border-top: 1px solid var(--bordergray); }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+  .footer-logo img { height: 40px; filter: brightness(0.7); margin-bottom: 20px; }
+  .footer-col h4 { font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: var(--silver); margin-bottom: 20px; font-weight: 700; }
+  .footer-col a { display: block; font-size: 13px; color: var(--muted); text-decoration: none; margin-bottom: 12px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; border-top: 1px solid var(--bordergray); }
+  .footer-bottom p { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+
+  /* ── FLOAT BTN ── */
+  .float-btn { position: fixed; bottom: 32px; right: 32px; z-index: 90; width: 52px; height: 52px; background: var(--white); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: all 0.2s; box-shadow: 0 0 0 1px var(--bordergray); }
+  .float-btn:hover { transform: translateY(-3px); background: var(--light); }
+
+  /* ── LOADER ── */
+  .page-loader { position: fixed; inset: 0; background: #000; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.6s, visibility 0.6s; }
+  .page-loader.done { opacity: 0; visibility: hidden; }
+  .loader-logo video { width: 120px; height: 120px; object-fit: contain; }
+  .loader-logo img { height: 60px; filter: brightness(0.5); animation: loaderPulse 0.8s ease-in-out infinite alternate; }
+  @keyframes loaderPulse { from { opacity: 0.3; } to { opacity: 1; } }
+
+  /* Mobile menu */
+  #mobileMenu { display:none; position:fixed; inset:0; background:rgba(10,10,10,0.99); z-index:99; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+  #mobileMenu a { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--white); text-decoration:none; letter-spacing:2px; }
+
+  .TCC-logo { object-fit: cover; height: 50px; width: 50px; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .industries-row { grid-template-columns: repeat(3, 1fr); }
+    .process-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 32px; flex-wrap: wrap; }
+    .form-row { grid-template-columns: 1fr; }
+    .ind-header-row { flex-direction: column; gap: 24px; }
+    .industries-row { grid-template-columns: repeat(2, 1fr); }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 540px) {
+    .industries-row { grid-template-columns: 1fr 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; gap: 20px; }
+    section { padding: 80px 5vw; }
+    .contact-form { padding: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOAST NOTIFICATION -->
+<div class="toast" id="toast"></div>
+
+<!-- LOADER -->
+<div class="page-loader" id="loader">
+  <div class="loader-logo">
+    <video autoplay loop muted playsinline>
+      <source src="cx.mp4" type="video/mp4">
+    </video>
+    <!-- Fallback if video not found -->
+    <img src="TCC-logo.jpeg" alt="The CAD Company" onerror="this.style.display='none'" style="display:none;">
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#industries" onclick="toggleMenu()">Industries</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">
+    <img class="TCC-logo" src="TCC-logo.jpeg" alt="The CAD Company">
+    The Cad Company
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- FLOAT -->
+<button class="float-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" title="Contact Us">✉</button>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      PRECISION<br>
+      <span class="italic-word">Engineering</span><br>
+      DESIGN
+    </h1>
+    <p class="hero-sub">From concept to completion — The CAD Company delivers world-class engineering support, product development, and architectural design services for the industries that build tomorrow.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#contact" class="btn-outline">Request Consultation</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num" data-count="500">0+</div>
+        <div class="stat-lbl">Projects Delivered</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="12">0+</div>
+        <div class="stat-lbl">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="6">0</div>
+        <div class="stat-lbl">Industry Sectors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Design Support</span> · Engineering</div>
+    <div class="marquee-item"><span>Reverse Engineering</span> · Automotive</div>
+    <div class="marquee-item"><span>New Product Development</span> · Aerospace</div>
+    <div class="marquee-item"><span>Architectural Design</span> · Residential</div>
+    <div class="marquee-item"><span>MEP Design</span> · Commercial</div>
+    <div class="marquee-item"><span>Structural Design</span> · Automation</div>
+    <div class="marquee-item"><span>Interior Design</span> · Industrial</div>
+    <div class="marquee-item"><span>Elevation Design</span> · Chennai</div>
+    <div class="marquee-item"><span>Design Support</span> · Engineering</div>
+    <div class="marquee-item"><span>Reverse Engineering</span> · Automotive</div>
+    <div class="marquee-item"><span>New Product Development</span> · Aerospace</div>
+    <div class="marquee-item"><span>Architectural Design</span> · Residential</div>
+    <div class="marquee-item"><span>MEP Design</span> · Commercial</div>
+    <div class="marquee-item"><span>Structural Design</span> · Automation</div>
+    <div class="marquee-item"><span>Interior Design</span> · Industrial</div>
+    <div class="marquee-item"><span>Elevation Design</span> · Chennai</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <span class="section-tag">Who We Are</span>
+      <h2 class="section-title">BUILT ON<br>BLUEPRINTS</h2>
+      <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:40px;font-weight:300;">The CAD Company is a Chennai-based engineering and design firm delivering precision-driven solutions across mechanical, automotive, aerospace, automation, and architectural sectors. We are the team your vision needs.</p>
+      <div class="about-pillar reveal">
+        <div class="pillar-num">01</div>
+        <div>
+          <div class="pillar-title">Engineering-First Mindset</div>
+          <div class="pillar-desc">Every project begins with deep technical analysis. We engineer solutions that work in the real world, not just on paper.</div>
+        </div>
+      </div>
+      <div class="about-pillar reveal">
+        <div class="pillar-num">02</div>
+        <div>
+          <div class="pillar-title">Detail-Oriented Execution</div>
+          <div class="pillar-desc">From 2D drafting to complex 3D modelling, we deliver work that meets international standards and tight tolerances.</div>
+        </div>
+      </div>
+      <div class="about-pillar reveal">
+        <div class="pillar-num">03</div>
+        <div>
+          <div class="pillar-title">Long-Term Partnerships</div>
+          <div class="pillar-desc">Our clients trust us as a strategic partner, not just a vendor. We integrate with your team and timelines seamlessly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;flex-wrap:wrap;gap:24px;">
+    <div>
+      <span class="section-tag">What We Do</span>
+      <h2 class="section-title">OUR<br>SERVICES</h2>
+    </div>
+    <div class="services-tabs">
+      <button class="tab-btn active" onclick="filterServices('all',this)">All</button>
+      <button class="tab-btn" onclick="filterServices('eng',this)">Engineering</button>
+      <button class="tab-btn" onclick="filterServices('arch',this)">Architectural</button>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card visible reveal" data-cat="eng">
+      <div class="service-num">01</div>
+      <div class="service-name">Design Support Services</div>
+      <div class="service-desc">Full-spectrum CAD design support — concept sketches, detailed 2D drafting, precise 3D modelling, assemblies, and manufacturing drawings.</div>
+      <div class="service-tags"><span class="stag">2D Drafting</span><span class="stag">3D Modelling</span><span class="stag">Assemblies</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="eng">
+      <div class="service-num">02</div>
+      <div class="service-name">Reverse Engineering</div>
+      <div class="service-desc">Recreate physical components into accurate digital models using advanced 3D scanning, measurement, and parametric modelling techniques.</div>
+      <div class="service-tags"><span class="stag">3D Scanning</span><span class="stag">Point Cloud</span><span class="stag">CAD Recreation</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="eng">
+      <div class="service-num">03</div>
+      <div class="service-name">New Product Development</div>
+      <div class="service-desc">From ideation to production-ready designs — concept, feasibility, design validation, and prototype documentation.</div>
+      <div class="service-tags"><span class="stag">Concept Design</span><span class="stag">Prototyping</span><span class="stag">DFM</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="arch">
+      <div class="service-num">04</div>
+      <div class="service-name">2D & 3D Layout Design</div>
+      <div class="service-desc">Comprehensive floor plans, site layouts, and 3D spatial designs for residential and commercial buildings across all scales.</div>
+      <div class="service-tags"><span class="stag">Floor Plans</span><span class="stag">Site Plans</span><span class="stag">3D Layouts</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="arch">
+      <div class="service-num">05</div>
+      <div class="service-name">MEP Design</div>
+      <div class="service-desc">Detailed mechanical, electrical, and plumbing system design integrated with architectural plans for code-compliant, efficient buildings.</div>
+      <div class="service-tags"><span class="stag">Plumbing</span><span class="stag">Electrical</span><span class="stag">HVAC</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="arch">
+      <div class="service-num">06</div>
+      <div class="service-name">Structural Design</div>
+      <div class="service-desc">Robust structural engineering drawings ensuring safety, stability, and compliance with local building codes and standards.</div>
+      <div class="service-tags"><span class="stag">RCC Design</span><span class="stag">Steel Structures</span><span class="stag">Foundation</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="arch">
+      <div class="service-num">07</div>
+      <div class="service-name">Interior Design</div>
+      <div class="service-desc">Functional and aesthetic interior space planning, material selection, furniture layouts, and photorealistic 3D renderings.</div>
+      <div class="service-tags"><span class="stag">Space Planning</span><span class="stag">3D Renders</span><span class="stag">Material Boards</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="arch">
+      <div class="service-num">08</div>
+      <div class="service-name">Elevation Design</div>
+      <div class="service-desc">Striking exterior elevation designs — front, side, and rear elevations with material finishes, cladding, and landscaping details.</div>
+      <div class="service-tags"><span class="stag">Facade Design</span><span class="stag">Cladding</span><span class="stag">Landscaping</span></div>
+    </div>
+    <div class="service-card visible reveal" data-cat="eng">
+      <div class="service-num">09</div>
+      <div class="service-name">Engineering Documentation</div>
+      <div class="service-desc">Accurate BOM creation, GD&T annotation, assembly instructions, and technical documentation packages ready for manufacturing.</div>
+      <div class="service-tags"><span class="stag">BOM</span><span class="stag">GD&amp;T</span><span class="stag">Tech Docs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="ind-header-row">
+    <div>
+      <span class="section-tag">Sectors We Serve</span>
+      <h2 class="section-title">INDUSTRIES</h2>
+    </div>
+    <p class="section-sub">Deep domain expertise across six critical industries that demand precision, reliability, and innovation.</p>
+  </div>
+  <div class="industries-row">
+    <div class="industry-card reveal">
+      <div class="ind-icon-wrap"><i class="fa-solid fa-car"></i></div>
+      <div class="ind-name">Automotive</div>
+      <div class="ind-sub">Body, chassis & powertrain design</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="ind-icon-wrap"><i class="fa-solid fa-plane"></i></div>
+      <div class="ind-name">Aerospace</div>
+      <div class="ind-sub">Structural & systems design</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="ind-icon-wrap"><i class="fa-solid fa-industry"></i></div>
+      <div class="ind-name">Industrial</div>
+      <div class="ind-sub">Machine & equipment design</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="ind-icon-wrap"><i class="fa-solid fa-robot"></i></div>
+      <div class="ind-name">Automation</div>
+      <div class="ind-sub">Jigs, fixtures & robotics</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="ind-icon-wrap"><i class="fa-solid fa-house"></i></div>
+      <div class="ind-name">Residential</div>
+      <div class="ind-sub">Homes, villas & apartments</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="ind-icon-wrap"><i class="fa-solid fa-building"></i></div>
+      <div class="ind-name">Commercial</div>
+      <div class="ind-sub">Offices, retail & institutions</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-header">
+    <span class="section-tag">How We Work</span>
+    <h2 class="section-title">OUR PROCESS</h2>
+    <p class="section-sub">A structured, transparent workflow that keeps you informed and in control at every stage.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Discovery & Brief</div>
+      <div class="step-desc">We study your requirements, scope, constraints, and timelines in detail before proposing any solution.</div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Proposal & Planning</div>
+      <div class="step-desc">Clear project plan with milestones, deliverable formats, team assignment, and cost estimate.</div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Design & Development</div>
+      <div class="step-desc">Our engineers execute with precision using industry-standard CAD tools and proven workflows.</div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">04</div>
+      <div class="step-title">Review & Revisions</div>
+      <div class="step-desc">Collaborative review cycles with structured feedback and rapid revision turnarounds.</div>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">05</div>
+      <div class="step-title">Delivery & Support</div>
+      <div class="step-desc">Final file handover in your required format, with post-delivery support included.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div>
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">THE CAD<br>ADVANTAGE</h2>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <div class="why-num">01</div>
+          <div>
+            <div class="why-title">Cross-Domain Expertise</div>
+            <div class="why-desc">Rare combination of industrial engineering and architectural design under one roof — saving you time and coordination overhead.</div>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">02</div>
+          <div>
+            <div class="why-title">Chennai's Fastest Turnaround</div>
+            <div class="why-desc">Our lean, dedicated team structure lets us move faster than large firms without compromising on quality or accuracy.</div>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">03</div>
+          <div>
+            <div class="why-title">Industry-Standard Tools</div>
+            <div class="why-desc">We work in SolidWorks, AutoCAD, CATIA, Revit, and more — delivering in any format your workflow requires.</div>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">04</div>
+          <div>
+            <div class="why-title">Transparent Communication</div>
+            <div class="why-desc">Real-time project tracking, regular updates, and a dedicated point of contact for every engagement.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header" style="text-align:center;">
+    <span class="section-tag">Client Voices</span>
+    <h2 class="section-title">WHAT THEY SAY</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The CAD Company delivered our complete machine design package in under two weeks. The quality was excellent and they were highly responsive throughout the project."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div>
+          <div class="testi-name">Rajan Kumar</div>
+          <div class="testi-role">Production Head, Auto Components Co.</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"We handed them our architectural brief on Monday and had complete 2D, 3D, and elevation drawings by Friday. Exceptional speed without sacrificing precision."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">PS</div>
+        <div>
+          <div class="testi-name">Priya Sundar</div>
+          <div class="testi-role">Director, Sundar Builders</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Their reverse engineering work was spot-on. They recreated an obsolete component from a physical sample and had it ready for production in record time."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MA</div>
+        <div>
+          <div class="testi-name">Mohammed Asif</div>
+          <div class="testi-role">Engineer, Aerospace MRO Firm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-tag">Let's Build Together</span>
+    <h2 class="section-title">GET IN<br>TOUCH</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-detail reveal">
+        <div>
+          <div class="cdet-label">Location</div>
+          <div class="cdet-val">Chennai, Tamil Nadu, India</div>
+        </div>
+      </div>
+      <div class="contact-detail reveal">
+        <div>
+          <div class="cdet-label">Phone</div>
+          <div class="cdet-val"><a href="tel:+919345888899">+91 9345888899</a></div>
+        </div>
+      </div>
+      <div class="contact-detail reveal">
+        <div>
+          <div class="cdet-label">Email</div>
+          <div class="cdet-val"><a href="mailto:admin@thecadcompany.in">admin@thecadcompany.in</a></div>
+        </div>
+      </div>
+      <div class="contact-detail reveal">
+        <div>
+          <div class="cdet-label">Working Hours</div>
+          <div class="cdet-val">Mon – Sat: 9:00 AM – 7:00 PM IST</div>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding:32px;border:1px solid var(--bordergray);" class="reveal">
+        <div style="font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--silver);margin-bottom:12px;font-weight:700;">Free Estimate</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.8;">Share your drawings or requirements via email and we'll provide a free project estimate within 24 hours.</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         CONTACT FORM — powered by EmailJS
+         Fill in YOUR keys in the <script> below
+    ═══════════════════════════════════════════ -->
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f_name">Your Name *</label>
+          <input type="text" id="f_name" placeholder="Full name">
+          <div class="field-error" id="err_name">Please enter your name.</div>
+        </div>
+        <div class="form-group">
+          <label for="f_email">Email Address *</label>
+          <input type="email" id="f_email" placeholder="you@company.com">
+          <div class="field-error" id="err_email">Please enter a valid email.</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f_phone">Phone Number *</label>
+          <input type="tel" id="f_phone" placeholder="+91 XXXXX XXXXX">
+          <div class="field-error" id="err_phone">Please enter your phone number.</div>
+        </div>
+        <div class="form-group">
+          <label for="f_company">Company / Firm</label>
+          <input type="text" id="f_company" placeholder="Optional">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="f_service">Service Required *</label>
+        <select id="f_service">
+          <option value="">Select a service...</option>
+          <optgroup label="Engineering Services">
+            <option>Design Support Services</option>
+            <option>Reverse Engineering</option>
+            <option>New Product Development</option>
+            <option>Engineering Documentation</option>
+          </optgroup>
+          <optgroup label="Architectural Services">
+            <option>2D & 3D Layout Design</option>
+            <option>Plumbing & Electrical (MEP)</option>
+            <option>Structural Design</option>
+            <option>Interior Design</option>
+            <option>Elevation Design</option>
+          </optgroup>
+          <option>Multiple / Not Sure</option>
+        </select>
+        <div class="field-error" id="err_service">Please select a service.</div>
+      </div>
+      <div class="form-group">
+        <label for="f_message">Project Description *</label>
+        <textarea id="f_message" placeholder="Tell us about your project, industry, timeline, and specific requirements..."></textarea>
+        <div class="field-error" id="err_message">Please describe your project.</div>
+      </div>
+      <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">
+        <div class="spinner" id="spinner"></div>
+        <span id="btnText">Send Enquiry →</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><img class="TCC-logo" src="TCC-logo.jpeg" alt="The CAD Company"></div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;max-width:260px;">Precision engineering and design services for industrial and architectural sectors. Based in Chennai, serving clients across India and globally.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Engineering</h4>
+      <a href="#services">Design Support</a>
+      <a href="#services">Reverse Engineering</a>
+      <a href="#services">Product Development</a>
+      <a href="#services">Documentation</a>
+    </div>
+    <div class="footer-col">
+      <h4>Architectural</h4>
+      <a href="#services">2D/3D Layout</a>
+      <a href="#services">MEP Design</a>
+      <a href="#services">Structural</a>
+      <a href="#services">Interior & Elevation</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">About Us</a>
+      <a href="#industries">Industries</a>
+      <a href="#process">Our Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 The CAD Company. Chennai, Tamil Nadu. All rights reserved.</p>
+    <p>Design the Future.</p>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   ▼▼▼  EMAILJS CONFIGURATION — FILL IN YOUR 3 KEYS  ▼▼▼
+   Steps are explained at the bottom of this file.
+═══════════════════════════════════════════════════════ */
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";    // e.g. "abc123XYZ"
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";    // e.g. "service_xxxxxxx"
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";   // e.g. "template_xxxxxxx"
+/* ▲▲▲  END OF CONFIGURATION  ▲▲▲ */
+
+// Initialise EmailJS
+(function(){
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+})();
+
+/* ── PAGE LOADER ── */
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('loader').classList.add('done'); }, 1200);
+});
+
+/* ── MOBILE MENU ── */
+function toggleMenu() {
+  const m = document.getElementById('mobileMenu');
+  m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+}
+
+/* ── SERVICE TABS ── */
+function filterServices(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.service-card').forEach(c => {
+    const show = cat === 'all' || c.dataset.cat === cat;
+    c.style.display = show ? 'block' : 'none';
+    c.classList.toggle('visible', show);
+  });
+}
+
+/* ── SCROLL REVEAL ── */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+function animateCount(el) {
+  const target = parseInt(el.dataset.count);
+  const suffix = el.textContent.replace(/\d+/g, '').trim();
+  let current = 0;
+  const step = target / 60;
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = Math.floor(current) + suffix;
+    if (current >= target) clearInterval(timer);
+  }, 24);
+}
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-num[data-count]').forEach(animateCount);
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) statsObs.observe(heroStats);
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').style.borderBottomColor =
+    window.scrollY > 80 ? '#1a1a1a' : 'var(--bordergray)';
+});
+
+/* ── TOAST ── */
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type}`;
+  void t.offsetWidth; // reflow
+  t.classList.add('show');
+  setTimeout(() => { t.classList.remove('show'); }, 5000);
+}
+
+/* ── FORM VALIDATION ── */
+function clearErrors() {
+  document.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('input.invalid, select.invalid, textarea.invalid')
+    .forEach(e => e.classList.remove('invalid'));
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validateForm() {
+  let valid = true;
+  const name    = document.getElementById('f_name');
+  const email   = document.getElementById('f_email');
+  const phone   = document.getElementById('f_phone');
+  const service = document.getElementById('f_service');
+  const message = document.getElementById('f_message');
+
+  if (!name.value.trim()) {
+    name.classList.add('invalid');
+    document.getElementById('err_name').classList.add('show');
+    valid = false;
+  }
+  if (!validateEmail(email.value.trim())) {
+    email.classList.add('invalid');
+    document.getElementById('err_email').classList.add('show');
+    valid = false;
+  }
+  if (!phone.value.trim()) {
+    phone.classList.add('invalid');
+    document.getElementById('err_phone').classList.add('show');
+    valid = false;
+  }
+  if (!service.value) {
+    service.classList.add('invalid');
+    document.getElementById('err_service').classList.add('show');
+    valid = false;
+  }
+  if (!message.value.trim()) {
+    message.classList.add('invalid');
+    document.getElementById('err_message').classList.add('show');
+    valid = false;
+  }
+  return valid;
+}
+
+/* ── MAIN SUBMIT HANDLER ── */
+async function handleSubmit() {
+  clearErrors();
+  if (!validateForm()) return;
+
+  const btn     = document.getElementById('submitBtn');
+  const spinner = document.getElementById('spinner');
+  const btnText = document.getElementById('btnText');
+
+  // Loading state
+  btn.disabled = true;
+  btn.classList.add('loading');
+  spinner.style.display = 'block';
+  btnText.textContent   = 'Sending...';
+
+  // Collect form data
+  const templateParams = {
+    from_name   : document.getElementById('f_name').value.trim(),
+    from_email  : document.getElementById('f_email').value.trim(),
+    from_phone  : document.getElementById('f_phone').value.trim(),
+    from_company: document.getElementById('f_company').value.trim() || 'Not provided',
+    service     : document.getElementById('f_service').value,
+    message     : document.getElementById('f_message').value.trim(),
+    reply_to    : document.getElementById('f_email').value.trim(),
+    to_email    : 'admin@thecadcompany.in',
+    sent_at     : new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+  };
+
+  try {
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+    // Success state
+    btn.classList.remove('loading');
+    btn.classList.add('success');
+    spinner.style.display = 'none';
+    btnText.textContent   = '✓ Enquiry Sent!';
+    showToast('✓ Your enquiry has been sent! We\'ll respond within 24 hours.', 'success');
+
+    // Reset form fields
+    ['f_name','f_email','f_phone','f_company','f_message'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('f_service').selectedIndex = 0;
+
+    // Restore button after 4 s
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.classList.remove('success');
+      btnText.textContent = 'Send Enquiry →';
+    }, 4000);
+
+  } catch (err) {
+    console.error('EmailJS error:', err);
+
+    // Error state
+    btn.classList.remove('loading');
+    btn.classList.add('error-state');
+    spinner.style.display = 'none';
+    btnText.textContent   = '✕ Failed — Try Again';
+    showToast('✕ Failed to send. Please email us directly at admin@thecadcompany.in', 'error');
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.classList.remove('error-state');
+      btnText.textContent = 'Send Enquiry →';
+    }, 4000);
+  }
+}
+</script>
+
+<!--
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  HOW TO SET UP EMAILJS (FREE — 200 emails/month)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1 — Create a free account
+  → https://www.emailjs.com  →  Sign Up
+
+STEP 2 — Add an Email Service
+  Dashboard → Email Services → Add New Service
+  Choose Gmail (or any provider) → connect your
+  admin@thecadcompany.in Google account
+  → Copy the Service ID  (e.g. service_abc123)
+
+STEP 3 — Create an Email Template
+  Dashboard → Email Templates → Create New Template
+
+  Set "To Email"  : {{to_email}}
+  Set "Reply To"  : {{reply_to}}
+  Set Subject     : New Enquiry from {{from_name}} — {{service}}
+
+  Body (paste this):
+  ─────────────────────────────────────────
+  New enquiry received on thecadcompany.in
+
+  Name    : {{from_name}}
+  Email   : {{from_email}}
+  Phone   : {{from_phone}}
+  Company : {{from_company}}
+  Service : {{service}}
+  Sent at : {{sent_at}}
+
+  Message:
+  {{message}}
+
+  ─────────────────────────────────────────
+  → Save Template → Copy the Template ID  (e.g. template_xyz789)
+
+STEP 4 — Get your Public Key
+  Dashboard → Account → General → Public Key
+  Copy it  (e.g. abc123XYZ)
+
+STEP 5 — Paste the 3 keys into this file
+  Find the EMAILJS CONFIGURATION block near the top of
+  the <script> and replace the placeholder strings:
+
+    const EMAILJS_PUBLIC_KEY  = "abc123XYZ";
+    const EMAILJS_SERVICE_ID  = "service_abc123";
+    const EMAILJS_TEMPLATE_ID = "template_xyz789";
+
+  Save and deploy — done! ✓
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+-->
+</body>
+</html>
+HTMLEOF
+echo "Done"
+Output
+
+Done

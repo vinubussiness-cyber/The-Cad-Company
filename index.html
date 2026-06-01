@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The CAD Company | Engineering & Design Services, Chennai</title>
+<title>The Cad Company</title>
+<link rel="icon" type="image/svg+xml" href="./TCC-logo.jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -793,53 +794,56 @@
         <div style="font-size:13px;color:var(--muted);line-height:1.8;">Share your drawings or requirements via email and we'll provide a free project estimate within 24 hours.</div>
       </div>
     </div>
-    <div class="contact-form reveal">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="Full name">
+
+    <form action="" id="contactForm">
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@company.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+          <div class="form-group">
+            <label>Company / Firm</label>
+            <input type="text" placeholder="Optional">
+          </div>
         </div>
         <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="you@company.com">
+          <label>Service Required</label>
+          <select>
+            <option value="">Select a service...</option>
+            <optgroup label="Engineering Services">
+              <option>Design Support Services</option>
+              <option>Reverse Engineering</option>
+              <option>New Product Development</option>
+              <option>Engineering Documentation</option>
+            </optgroup>
+            <optgroup label="Architectural Services">
+              <option>2D & 3D Layout Design</option>
+              <option>Plumbing & Electrical (MEP)</option>
+              <option>Structural Design</option>
+              <option>Interior Design</option>
+              <option>Elevation Design</option>
+            </optgroup>
+            <option>Multiple / Not Sure</option>
+          </select>
         </div>
-      </div>
-      <div class="form-row">
         <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" placeholder="+91 XXXXX XXXXX">
+          <label>Project Description</label>
+          <textarea placeholder="Tell us about your project, industry, timeline, and specific requirements..."></textarea>
         </div>
-        <div class="form-group">
-          <label>Company / Firm</label>
-          <input type="text" placeholder="Optional">
-        </div>
+        <button type="submit" class="btn-submit" onclick="handleSubmit()">Send Enquiry →</button>
       </div>
-      <div class="form-group">
-        <label>Service Required</label>
-        <select>
-          <option value="">Select a service...</option>
-          <optgroup label="Engineering Services">
-            <option>Design Support Services</option>
-            <option>Reverse Engineering</option>
-            <option>New Product Development</option>
-            <option>Engineering Documentation</option>
-          </optgroup>
-          <optgroup label="Architectural Services">
-            <option>2D & 3D Layout Design</option>
-            <option>Plumbing & Electrical (MEP)</option>
-            <option>Structural Design</option>
-            <option>Interior Design</option>
-            <option>Elevation Design</option>
-          </optgroup>
-          <option>Multiple / Not Sure</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Project Description</label>
-        <textarea placeholder="Tell us about your project, industry, timeline, and specific requirements..."></textarea>
-      </div>
-      <button class="btn-submit" onclick="handleSubmit()">Send Enquiry →</button>
-    </div>
+    </form>
   </div>
 </section>
 
@@ -976,7 +980,36 @@ window.addEventListener('scroll', () => {
 
 // Form submit
 function handleSubmit() {
-  alert("Thank you! We'll respond within 24 hours.");
+  
+
+  document.getElementById('contactForm').addEventListener('submit', async(e) => {
+    e.preventDefault();
+
+    const formData  = {
+      name: document.querySelector('input[placeholder="Full name"]').value,
+      email: document.querySelector('input[type="email"]').value,
+      phNo: document.querySelector('input[type="tel"]').value,
+      client_company: document.querySelector('input[placeholder="optional"]').value,
+      service_required: document.querySelector('select').value,
+      description: document.querySelector('textarea').value
+    };
+
+    const response = await fetch('/api/contact',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if(response.ok) {
+      alert("Thank you! We'll respond within 24 hours.");
+      document.getElementById('contactForm').reset();
+    } else{
+      alert('Something went wrong. Kindly convey your requirements by the contact number mentioned on the website.')
+    }
+  })
+
 }
 </script>
 </body>
