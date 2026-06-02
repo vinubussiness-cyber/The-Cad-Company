@@ -892,22 +892,6 @@ window.addEventListener('load', () => {
   setTimeout(() => { document.getElementById('loader').classList.add('done'); }, 1200);
 });
 
-// Custom Cursor
-const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-document.addEventListener('mousemove', e => {
-  dot.style.left = e.clientX + 'px';
-  dot.style.top = e.clientY + 'px';
-  setTimeout(() => {
-    ring.style.left = e.clientX + 'px';
-    ring.style.top = e.clientY + 'px';
-  }, 80);
-});
-document.querySelectorAll('a,button,.service-card,.industry-card,.testi-card,.process-step').forEach(el => {
-  el.addEventListener('mouseenter', () => { ring.style.transform = 'translate(-50%,-50%) scale(1.6)'; ring.style.borderColor = 'rgba(255,255,255,0.7)'; });
-  el.addEventListener('mouseleave', () => { ring.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.borderColor = 'rgba(255,255,255,0.4)'; });
-});
-
 // Mobile Menu
 function toggleMenu() {
   const m = document.getElementById('mobileMenu');

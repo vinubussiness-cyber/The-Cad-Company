@@ -26,6 +26,8 @@ module.exports = async (req, res) => {
     await transporter.verify();
     console.log("SMTP connection successful");
 
+    console.log("Sending email...");
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: "admin@thecadcompany.in",
@@ -41,10 +43,12 @@ module.exports = async (req, res) => {
       `,
     });
 
+    console.log("Email sent successfully");
+
     return res.status(200).json({ success: true });
 
   } catch (error) {
-    console.error(error);
+    console.error('Full error:', error);
     return res.status(500).json({
       success: false,
       error: error.message,
