@@ -1,6 +1,11 @@
 const nodemailer = require("nodemailer");
 
 module.exports = async (req, res) => {
+  console.log("METHOD:", req.method);
+  console.log("BODY:", req.body);
+  console.log("EMAIL_USER:", process.env.EMAIL_USER ? "SET" : "NOT SET");
+  console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "SET" : "NOT SET");
+
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
@@ -36,7 +41,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true });
 
   } catch (error) {
-    console.error("Email error:", error);
+    console.error(error);
     return res.status(500).json({
       success: false,
       error: error.message,
