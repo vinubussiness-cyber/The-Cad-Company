@@ -23,6 +23,9 @@ module.exports = async (req, res) => {
       },
     });
 
+    await transporter.verify();
+    console.log("SMTP connection successful");
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: "admin@thecadcompany.in",
