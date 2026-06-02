@@ -987,11 +987,17 @@ window.addEventListener('scroll', () => {
       body: JSON.stringify(formData)
     });
 
+    const data = await response.json();
+    console.log(data);
+
     if(response.ok) {
       alert("Thank you! We'll respond within 24 hours.");
       document.getElementById('contactForm').reset();
     } else{
-      alert('Something went wrong. Kindly convey your requirements by the contact number mentioned on the website.')
+      alert(
+        (data.error || data.message || "Unknown error")
+      // 'Something went wrong. Kindly convey your requirements by the contact number mentioned on the website.'
+    )
     }
   })
 
