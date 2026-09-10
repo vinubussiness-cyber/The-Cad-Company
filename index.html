@@ -15,7 +15,7 @@
     --darkgray: #1A1A1A;
     --midgray: #2A2A2A;
     --bordergray: #2E2E2E;
-    --muted: #666666;
+    --muted: #b9b9b9;
     --silver: #999999;
     --light: #CCCCCC;
     --offwhite: #F0EFEB;
@@ -183,7 +183,7 @@
   /* ── INDUSTRIES ── */
   #industries { background: var(--dark); }
   .ind-header-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 72px; }
-  .industries-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--bordergray); }
+  .industries-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--bordergray); }
   .industry-card { background: var(--dark); padding: 40px 24px; text-align: center; transition: background 0.2s; cursor: default; }
   .industry-card:hover { background: var(--darkgray); }
   .ind-icon-wrap { width: 56px; height: 56px; border: 1px solid var(--bordergray); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; transition: border-color 0.2s; }
@@ -251,7 +251,7 @@
 
   /* ── FOOTER ── */
   footer { background: var(--black); padding: 72px 5vw 40px; border-top: 1px solid var(--bordergray); }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
   .footer-logo img { height: 40px; filter: brightness(0.7); margin-bottom: 20px; }
   .footer-brand p { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 260px; }
   .footer-col h4 { font-size: 10px; text-transform: uppercase; letter-spacing: 2.5px; color: var(--silver); margin-bottom: 20px; font-weight: 700; }
@@ -393,9 +393,9 @@
   <div class="orb orb-2"></div>
   <div class="hero-content">
     <h1 class="hero-title">
-      PRECISION<br>
-      <span class="italic-word">Engineering</span><br>
-      DESIGN
+      Engineering<br>
+      <span class="italic-word">Beyond</span><br>
+      Drawing
     </h1>
     <p class="hero-sub">From concept to completion — The CAD Company delivers world-class engineering support, product development, and architectural design services for the industries that build tomorrow.</p>
     <div class="hero-actions">
@@ -429,20 +429,14 @@
     <div class="marquee-item"><span>Design Support</span> · Engineering</div>
     <div class="marquee-item"><span>Reverse Engineering</span> · Automotive</div>
     <div class="marquee-item"><span>New Product Development</span> · Aerospace</div>
-    <div class="marquee-item"><span>Architectural Design</span> · Residential</div>
-    <div class="marquee-item"><span>MEP Design</span> · Commercial</div>
     <div class="marquee-item"><span>Structural Design</span> · Automation</div>
     <div class="marquee-item"><span>Interior Design</span> · Industrial</div>
-    <div class="marquee-item"><span>Elevation Design</span> · Chennai</div>
     <!-- duplicate for seamless loop -->
     <div class="marquee-item"><span>Design Support</span> · Engineering</div>
     <div class="marquee-item"><span>Reverse Engineering</span> · Automotive</div>
     <div class="marquee-item"><span>New Product Development</span> · Aerospace</div>
-    <div class="marquee-item"><span>Architectural Design</span> · Residential</div>
-    <div class="marquee-item"><span>MEP Design</span> · Commercial</div>
     <div class="marquee-item"><span>Structural Design</span> · Automation</div>
     <div class="marquee-item"><span>Interior Design</span> · Industrial</div>
-    <div class="marquee-item"><span>Elevation Design</span> · Chennai</div>
   </div>
 </div>
 
@@ -463,7 +457,7 @@
     <div>
       <span class="section-tag">Who We Are</span>
       <h2 class="section-title">BUILT ON<br>BLUEPRINTS</h2>
-      <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:40px;font-weight:300;">The CAD Company is a Chennai-based engineering and design firm delivering precision-driven solutions across mechanical, automotive, aerospace, automation, and architectural sectors. We are the team your vision needs.</p>
+      <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:40px;font-weight:300;">The CAD Company is a Chennai-based engineering and design firm delivering precision-driven solutions across mechanical, automotive, aerospace and automation sectors. We are the team your vision needs.</p>
       <div class="about-pillar reveal">
         <div class="pillar-num">01</div>
         <div>
@@ -496,11 +490,11 @@
       <span class="section-tag">What We Do</span>
       <h2 class="section-title">OUR<br>SERVICES</h2>
     </div>
-    <div class="services-tabs">
+    <!-- <div class="services-tabs">
       <button class="tab-btn active" onclick="filterServices('all',this)">All</button>
       <button class="tab-btn" onclick="filterServices('eng',this)">Engineering</button>
       <button class="tab-btn" onclick="filterServices('arch',this)">Architectural</button>
-    </div>
+    </div> -->
   </div>
   <div class="services-grid">
     <div class="service-card visible reveal" data-cat="eng">
@@ -535,33 +529,33 @@
       <div class="service-desc">Comprehensive floor plans, site layouts, and 3D spatial designs for residential and commercial buildings across all scales.</div>
       <div class="service-tags"><span class="stag">Floor Plans</span><span class="stag">Site Plans</span><span class="stag">3D Layouts</span></div>
     </div> -->
-    <div class="service-card visible reveal" data-cat="arch">
+    <!-- <div class="service-card visible reveal" data-cat="arch">
       <div class="service-num">05</div>
       <div class="service-name">MEP Design</div>
       <div class="service-desc">Detailed mechanical, electrical, and plumbing system design integrated with architectural plans for code-compliant, efficient buildings.</div>
       <div class="service-tags"><span class="stag">Plumbing</span><span class="stag">Electrical</span><span class="stag">HVAC</span></div>
-    </div>
+    </div> -->
 
     <div class="service-card visible reveal" data-cat="arch">
-      <div class="service-num">06</div>
+      <div class="service-num">05</div>
       <div class="service-name">Automtion Design Services - SPM</div>
       <div class="service-desc">From concept to manufacturing, we deliver high-quality equipment designs tailored to meet specific process and operational requirements.</div>
       <div class="service-tags"><span class="stag">Automation</span><span class="stag">Tailored solution</span></div>
     </div>
     <div class="service-card visible reveal" data-cat="arch">
-      <div class="service-num">07</div>
+      <div class="service-num">06</div>
       <div class="service-name">Jig And Fixture Design Services</div>
       <div class="service-desc">Our designs optimize machining, welding, assembly, and inspection processes by providing accurate positioning, improved repeatability, and reduced setup time.</div>
       <div class="service-tags"><span class="stag">Assembly</span><span class="stag">Welding</span><span class="stag">Machine Design</span></div>
     </div>
     <div class="service-card visible reveal" data-cat="arch">
-      <div class="service-num">08</div>
+      <div class="service-num">07</div>
       <div class="service-name">3D Modeling Services</div>
       <div class="service-desc">We create accurate and detailed 3D models that help visualize, analyze, and optimize products before manufacturing, ensuring efficiency and precision.</div>
       <div class="service-tags"><span class="stag">3D Mould</span><span class="stag">optimized layouts</span><span class="stag">Efficiency</span></div>
     </div>
     <div class="service-card visible reveal" data-cat="eng">
-      <div class="service-num">09</div>
+      <div class="service-num">08</div>
       <div class="service-name">Engineering Documentation</div>
       <div class="service-desc">Accurate BOM creation, GD&T annotation, assembly instructions, and technical documentation packages ready for manufacturing.</div>
       <div class="service-tags"><span class="stag">BOM</span><span class="stag">GD&amp;T</span><span class="stag">Tech Docs</span></div>
@@ -605,7 +599,7 @@
     <div class="ind-sub">Jigs, fixtures & robotics</div>
   </div>
 
-  <div class="industry-card reveal">
+  <!-- <div class="industry-card reveal">
     <div class="ind-icon-wrap"><i class="fa-solid fa-house"></i></div>
     <div class="ind-name">Residential</div>
     <div class="ind-sub">Homes, villas & apartments</div>
@@ -615,7 +609,7 @@
     <div class="ind-icon-wrap"><i class="fa-solid fa-building"></i></div>
     <div class="ind-name">Commercial</div>
     <div class="ind-sub">Offices, retail & institutions</div>
-  </div>
+  </div> -->
 </div>
 </section>
 
@@ -737,17 +731,20 @@
         </div>
       </div>
     </div>
+    
     <div class="testi-card reveal">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"We handed them our architectural brief on Monday and had complete 2D, 3D, and elevation drawings by Friday. Exceptional speed without sacrificing precision."</p>
+      <p class="testi-text">"The CAD Company handled the complete machine building process with great precision. From fabrication and assembly to final testing, everything was completed on schedule and the machine performed exactly as required."</p>
       <div class="testi-author">
-        <div class="testi-avatar">PS</div>
+        <div class="testi-avatar">AS</div>
         <div>
-          <div class="testi-name">Priya Sundar</div>
-          <div class="testi-role">Director, Sundar Builders</div>
+          <div class="testi-name">Arun Sharma</div>
+          <div class="testi-role">Plant Manager, Industrial Automation Co.</div>
         </div>
       </div>
     </div>
+
+
     <div class="testi-card reveal">
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">"Their reverse engineering work was spot-on. They recreated an obsolete component from a physical sample and had it ready for production in record time."</p>
@@ -816,21 +813,21 @@
         <div class="form-row">
           <div class="form-group">
             <label>Your Name</label>
-            <input type="text" placeholder="Full name">
+            <input type="text" placeholder="Full name" required>
           </div>
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" placeholder="you@company.com">
+            <input type="email" placeholder="you@company.com" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" placeholder="+91 XXXXX XXXXX">
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
           </div>
           <div class="form-group">
             <label>Company / Firm</label>
-            <input type="text" placeholder="Optional">
+            <input type="text" placeholder="Optional" required>
           </div>
         </div>
         <div class="form-group">
@@ -842,14 +839,16 @@
               <option>Reverse Engineering</option>
               <option>New Product Development</option>
               <option>Engineering Documentation</option>
+              <option>Machine building</option>
+              <option>Others</option>
             </optgroup>
-            <optgroup label="Architectural Services">
+            <!-- <optgroup label="Architectural Services">
               <option>2D & 3D Layout Design</option>
               <option>Plumbing & Electrical (MEP)</option>
               <option>Structural Design</option>
               <option>Interior Design</option>
               <option>Elevation Design</option>
-            </optgroup>
+            </optgroup> -->
             <option>Multiple / Not Sure</option>
           </select>
         </div>
@@ -877,13 +876,13 @@
       <a href="#services">Product Development</a>
       <a href="#services">Documentation</a>
     </div>
-    <div class="footer-col">
+    <!-- <div class="footer-col">
       <h4>Architectural</h4>
       <a href="#services">2D/3D Layout</a>
       <a href="#services">MEP Design</a>
       <a href="#services">Structural</a>
       <a href="#services">Interior & Elevation</a>
-    </div>
+    </div> -->
     <div class="footer-col">
       <h4>Company</h4>
       <a href="#about">About Us</a>
