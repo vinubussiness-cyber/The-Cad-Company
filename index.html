@@ -312,36 +312,35 @@
     }
 
     /* Machine-Building Process */
-.build-process {
-  padding: 100px 0;
-}
 
-.build-process .section-head {
-  margin-bottom: 55px;
-}
-
-.build-process .timeline {
+.timeline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px 24px;
+  gap: 24px;
 }
 
-.build-process .step {
+.step {
   position: relative;
-  padding-top: 55px;
+  padding: 28px 24px;
+  min-height: 230px;
+  box-sizing: border-box;
+
+  /* Remove outline/border */
+  border: none;
+  outline: none;
+
+  /* Keep normal section/card background */
+  background: transparent;
+  box-shadow: none;
 }
 
-.build-process .step-num {
-  position: absolute;
-  top: 0;
-  left: 0;
-
+.step-num {
   width: 42px;
   height: 42px;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -351,19 +350,25 @@
   font-weight: 700;
 }
 
-.build-process .step h3 {
+.step h3 {
   margin: 0 0 12px;
 }
 
-.build-process .step p {
+.step p {
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.65;
+}
+
+/* Remove any timeline connecting line */
+.timeline::before,
+.timeline::after {
+  display: none !important;
 }
 
 
 /* Tablet */
-@media (max-width: 1000px) {
-  .build-process .timeline {
+@media (max-width: 1100px) {
+  .timeline {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -371,15 +376,15 @@
 
 /* Mobile */
 @media (max-width: 650px) {
-  .build-process {
-    padding: 75px 0;
+  .timeline {
+    grid-template-columns: 1fr;
   }
 
-  .build-process .timeline {
-    grid-template-columns: 1fr;
-    gap: 35px;
+  .step {
+    min-height: auto;
   }
 }
+
 
 .enquiry{
   font-size: 38px;
