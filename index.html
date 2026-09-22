@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  :root {
+  /* :root {
     --black: #0A0A0A;
     --dark: #111111;
     --darkgray: #1A1A1A;
@@ -22,7 +22,7 @@
     --white: #FFFFFF;
     --accent: #FFFFFF;
     --accentglow: rgba(255,255,255,0.08);
-  }
+  } */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
@@ -317,13 +317,13 @@
   animation: fadeScale 1.5s ease-in-out infinite;
 }
 
-  .page-loader.done { opacity: 0; visibility: hidden; }
+  /* .page-loader.done { opacity: 0; visibility: hidden; }
   .loader-logo { animation: loaderPulse 0.8s ease-in-out infinite alternate; }
   .loader-logo img { height: 60px; filter: brightness(0.5); }
-  @keyframes loaderPulse { from { opacity: 0.3; } to { opacity: 1; } }
+  @keyframes loaderPulse { from { opacity: 0.3; } to { opacity: 1; } } */
 
   /* Mobile menu */
-  #mobileMenu { display:none; position:fixed; inset:0; background:rgba(10,10,10,0.99); z-index:99; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+  /* #mobileMenu { display:none; position:fixed; inset:0; background:rgba(10,10,10,0.99); z-index:99; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
   #mobileMenu a { font-family:'Bebas Neue',sans-serif; font-size:48px; color:var(--white); text-decoration:none; letter-spacing:2px; }
 
   .TCC-logo{
@@ -339,36 +339,151 @@
 
    .email{
     display: block;
-   }
+   } */
+
+
+
+
+
+
+
+
+
+/* tem styles */
+    :root{
+  --ink:#000000; --ink2:#000000; --panel:#000000; --line:#000000;
+  --text:#F0EFEB; --muted:#c4c1c1; --accent:#FFFFFF; --accent2:#CCCCCC;
+  --paper:#F0EFEB;  --white:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--ink);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+.container{width:min(1180px,92vw);margin:auto}
+.grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.45;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,#000,transparent 92%)}
+nav{position:fixed;top:0;left:0;right:0;height:76px;z-index:50;background:rgba(0,0,0,0.96);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-family:"Space Grotesk";font-weight:700;letter-spacing:.02em}
+/* .brand-mark{width:38px;height:38px;border:2px solid var(--accent);display:grid;place-items:center;position:relative} */
+/* .brand-mark:before,.brand-mark:after{content:"";position:absolute;background:var(--accent)}
+.brand-mark:before{width:18px;height:2px}.brand-mark:after{width:2px;height:18px} */
+
+.brand-mark img{
+  height: 50px;
+  width: 50px;
+}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:13px;color:var(--muted);transition:.2s}
+.nav-links a:hover{color:#FFFFFF}
+.nav-cta,.btn-primary{background:var(--accent);color:#111;padding:12px 20px;border-radius:5px;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;transition:.2s}
+.nav-cta:hover,.btn-primary:hover{transform:translateY(-2px);background:var(--accent2)}
+.menu{display:none;background:none;border:0;color:#FFFFFF;font-size:24px}
+.hero{min-height:820px;padding:150px 0 90px;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero:after{content:"";position:absolute;width:620px;height:620px;right:-160px;top:100px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,44,.2),transparent 68%);filter:blur(12px)}
+.hero-content{position:relative;z-index:2;max-width:820px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--accent2);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+.eyebrow i{width:24px;height:1px;background:var(--accent)}
+h1,h2,h3{font-family:"Space Grotesk",sans-serif}
+h1{font-size:clamp(56px,8.5vw,112px);line-height:.91;letter-spacing:-.055em;max-width:900px}
+h1 span{color:var(--accent)}
+.hero-copy{max-width:650px;color:var(--muted);font-size:18px;margin:28px 0 34px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-secondary{padding:12px 20px;border:1px solid var(--line);border-radius:5px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.btn-secondary:hover{border-color:#7d8d9c;background:rgba(255,255,255,.04)}
+.hero-meta{display:flex;gap:40px;margin-top:62px;padding-top:24px;border-top:1px solid var(--line)}
+.meta strong{display:block;font-family:"Space Grotesk";font-size:14px}.meta span{font-size:11px;color:var(--muted)}
+section{padding:110px 0}
+.section-head{display:flex;justify-content:space-between;gap:50px;align-items:end;margin-bottom:52px}
+.kicker{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.18em;font-weight:700;margin-bottom:12px}
+h2{font-size:clamp(38px,5vw,68px);line-height:.98;letter-spacing:-.045em}
+.section-intro{max-width:430px;color:var(--muted);font-size:15px}
+.about{color:var(--darkText)}
+.about .kicker{color:#FFFFFF}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:start}
+.about p{color:#586672;font-size:17px;max-width:650px}
+.feature-list{margin-top:38px;border-top:1px solid #F0EFEB}
+.feature{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid #F0EFEB}
+.feature b{font-family:"Space Grotesk";font-size:12px;color:#9aa7b0}
+.feature h3{font-size:16px;margin-bottom:4px}.feature p{font-size:13px;color:#6a7780}
+.blueprint{min-height:420px;background:#dfe5e8;border:1px solid #c8d0d5;position:relative;overflow:hidden}
+.blueprint:before{content:"";position:absolute;inset:30px;background:linear-gradient(#CCCCCC 1px,transparent 1px),linear-gradient(90deg,#CCCCCC 1px,transparent 1px);background-size:36px 36px}
+.machine{position:absolute;left:17%;right:17%;top:24%;bottom:24%;border:2px solid #000000}
+.machine:before{content:"";position:absolute;left:18%;right:18%;top:20%;bottom:20%;border:2px solid #FFFFFF}
+.machine:after{content:"SPM";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:700 54px "Space Grotesk";color:#000000;letter-spacing:-.08em}
+.dim{position:absolute;background:#52636f}.dim.one{height:1px;left:12%;right:12%;top:16%}.dim.two{width:1px;top:12%;bottom:12%;left:10%}
+.services{background:var(--ink)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.card{background:var(--ink2);padding:30px;min-height:270px;transition:.25s;position:relative}
+.card:hover{background:#192734;transform:translateY(-3px)}
+.card-num{font:700 44px "Space Grotesk";color:#344553}
+.card h3{font-size:19px;margin:25px 0 10px}
+.card p{color:var(--muted);font-size:13px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}.tag{font-size:10px;color:#b8c4cd;border:1px solid #334350;padding:5px 8px;text-transform:uppercase;letter-spacing:.06em}
+.industries{background:#101922}
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.ind{border:1px solid var(--line);padding:26px;min-height:170px;background:#121e28}
+.ind-num{color:var(--accent);font:600 12px "Space Grotesk";margin-bottom:35px}.ind h3{font-size:18px}.ind p{color:var(--muted);font-size:12px;margin-top:5px}
+.process{color:var(--darkText)}
+.process .kicker{color:#FFFFFF}.process-grid{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #CCCCCC;border-bottom:1px solid #CCCCCC}
+.step{padding:28px 20px;border-right:1px solid #CCCCCC}.step:last-child{border-right:0}.step-num{font:700 38px "Space Grotesk";color:#bcc6cc}.step h3{font-size:15px;margin:25px 0 8px}.step p{font-size:12px;color:#65737d}
+.contact{background:var(--ink2)}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px}
+.contact-copy p{color:var(--muted);max-width:430px;margin-top:20px}
+.contact-details{margin-top:38px}.detail{padding:18px 0;border-bottom:1px solid var(--line)}.detail small{display:block;color:var(--accent2);font-size:10px;text-transform:uppercase;letter-spacing:.15em;margin-bottom:4px}.detail a,.detail div{font-size:14px}
+.form{border:1px solid var(--line);padding:34px;background:#0e171f}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:16px}.field label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:7px}
+input,select,textarea{width:100%;background:#0a1118;border:1px solid #2b3a47;color:#FFFFFF;padding:13px 14px;outline:0;border-radius:3px}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}textarea{min-height:130px;resize:vertical}
+.submit{width:100%;border:0;cursor:pointer;margin-top:5px}
+footer{padding:55px 0 30px;border-top:1px solid var(--line);background:#080d12}
+.footer-top{display:flex;justify-content:space-between;gap:30px}.footer-brand p{color:var(--muted);font-size:12px;max-width:340px;margin-top:15px}.footer-links{display:flex;gap:22px;color:var(--muted);font-size:12px}.footer-links a:hover{color:#FFFFFF}
+.footer-bottom{border-top:1px solid var(--line);margin-top:45px;padding-top:20px;color:#667581;font-size:11px;display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s}.reveal.show{opacity:1;transform:none}
+#top{position:fixed;right:24px;bottom:24px;width:44px;height:44px;background:var(--accent);color:#111;border:0;border-radius:50%;z-index:40;cursor:pointer;font-weight:700}
+@media(max-width:900px){
+ .nav-links,.nav-cta{display:none}.menu{display:block}
+ .nav-links.open{display:flex;position:absolute;top:76px;left:0;right:0;background:#000000;flex-direction:column;align-items:flex-start;padding:25px 4vw;border-bottom:1px solid var(--line)}
+ .hero{min-height:720px;padding-top:125px}.hero-meta{gap:20px;flex-wrap:wrap}
+ .about-grid,.contact-grid{grid-template-columns:1fr}.blueprint{min-height:340px}
+ .services-grid{grid-template-columns:1fr 1fr}.ind-grid{grid-template-columns:1fr 1fr}.process-grid{grid-template-columns:1fr 1fr}
+ .step{border-bottom:1px solid #CCCCCC}.step:nth-child(2n){border-right:0}
+ .section-head{display:block}.section-intro{margin-top:20px}
+}
+@media(max-width:580px){
+ section{padding:78px 0}.hero{min-height:680px}.hero-copy{font-size:16px}
+ .services-grid,.ind-grid,.process-grid{grid-template-columns:1fr}.step{border-right:0}.row{grid-template-columns:1fr}
+ .footer-top,.footer-bottom{display:block}.footer-links{margin-top:25px;flex-wrap:wrap}.footer-bottom p+ p{margin-top:8px}
+}
 </style>
 </head>
 <body>
 
 <!-- LOADER -->
-<div class="page-loader" id="loader">
-  <div class="loader-logo">
+<!-- <div class="page-loader" id="loader">
+  <div class="loader-logo"> -->
     <!-- <img src="TCC-logo.jpeg" alt="The CAD Company"> -->
-     <video autoplay loop muted playinline>
+     <!-- <video autoplay loop muted playinline>
         <source src="cx.mp4" type="video/mp4">
      </video>
   </div>
-</div>
+</div> -->
 
 <!-- CURSOR -->
 <!-- <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div> -->
 
 <!-- MOBILE MENU -->
-<div id="mobileMenu">
+<!-- <div id="mobileMenu">
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#services" onclick="toggleMenu()">Services</a>
   <a href="#industries" onclick="toggleMenu()">Industries</a>
   <a href="#process" onclick="toggleMenu()">Process</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
-</div>
+</div> -->
 
 <!-- NAV -->
-<nav id="mainNav">
+<!-- <nav id="mainNav">
   <a href="#hero" class="nav-logo"><img class="TCC-logo" src="TCC-logo.jpeg" alt="The CAD Company">The Cad Company</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -380,13 +495,13 @@
   </ul>
   <a href="#contact" class="nav-cta">Get a Quote</a>
   <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-</nav>
+</nav> -->
 
 <!-- FLOAT -->
-<button class="float-btn" onclick="window.location='#contact'" title="Contact Us">✉</button>
+<!-- <button class="float-btn" onclick="window.location='#contact'" title="Contact Us">✉</button> -->
 
 <!-- HERO -->
-<section id="hero">
+<!-- <section id="hero">
   <div class="hero-grid"></div>
   <div class="hero-noise"></div>
   <div class="orb orb-1"></div>
@@ -400,7 +515,7 @@
     <p class="hero-sub">From concept to completion — The CAD Company delivers world-class engineering support, product development, and architectural design services for the industries that build tomorrow.</p>
     <div class="hero-actions">
       <a href="#services" class="btn-primary">Explore Services</a>
-      <a href="#contact" class="btn-outline">Request Consultation</a>
+      <a href="#contact" class="btn-outline">Request Consultation</a> -->
     </div>
     <!-- <div class="hero-stats">
       <div>
@@ -420,29 +535,29 @@
         <div class="stat-lbl">Client Satisfaction</div>
       </div>
     </div> -->
-  </div>
-</section>
+  <!-- </div>
+</section> -->
 
 <!-- MARQUEE -->
-<div class="marquee-wrap">
+<!-- <div class="marquee-wrap">
   <div class="marquee-track">
     <div class="marquee-item"><span>Design Support</span> · Engineering</div>
     <div class="marquee-item"><span>Reverse Engineering</span> · Automotive</div>
     <div class="marquee-item"><span>New Product Development</span> · Aerospace</div>
     <div class="marquee-item"><span>Structural Design</span> · Automation</div>
-    <div class="marquee-item"><span>Interior Design</span> · Industrial</div>
+    <div class="marquee-item"><span>Interior Design</span> · Industrial</div> -->
     <!-- duplicate for seamless loop -->
-    <div class="marquee-item"><span>Design Support</span> · Engineering</div>
+    <!-- <div class="marquee-item"><span>Design Support</span> · Engineering</div>
     <div class="marquee-item"><span>Reverse Engineering</span> · Automotive</div>
     <div class="marquee-item"><span>New Product Development</span> · Aerospace</div>
     <div class="marquee-item"><span>Structural Design</span> · Automation</div>
     <div class="marquee-item"><span>Interior Design</span> · Industrial</div>
   </div>
-</div>
+</div> -->
 
 <!-- ABOUT -->
-<section id="about">
-  <div class="about-grid">
+<!-- <section id="about">
+  <div class="about-grid"> -->
     <!-- <div class="about-visual">
       <div class="corner-mark tl"></div>
       <div class="corner-mark tr"></div>
@@ -454,7 +569,7 @@
         <div class="about-tagline">Design the Future</div>
       </div>
     </div> -->
-    <div>
+    <!-- <div>
       <span class="section-tag">Who We Are</span>
       <h2 class="section-title">BUILT ON<br>BLUEPRINTS</h2>
       <p style="font-size:15px;color:var(--muted);line-height:1.9;margin-bottom:40px;font-weight:300;">The CAD Company is a Chennai-based engineering and design firm delivering precision-driven solutions across mechanical, automotive, aerospace and automation sectors. We are the team your vision needs.</p>
@@ -481,21 +596,21 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- SERVICES -->
-<section id="services">
+<!-- <section id="services">
   <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:72px;flex-wrap:wrap;gap:24px;">
     <div>
       <span class="section-tag">What We Do</span>
       <h2 class="section-title">OUR<br>SERVICES</h2>
-    </div>
+    </div> -->
     <!-- <div class="services-tabs">
       <button class="tab-btn active" onclick="filterServices('all',this)">All</button>
       <button class="tab-btn" onclick="filterServices('eng',this)">Engineering</button>
       <button class="tab-btn" onclick="filterServices('arch',this)">Architectural</button>
     </div> -->
-  </div>
+  <!-- </div>
   <div class="services-grid">
     <div class="service-card visible reveal" data-cat="eng">
       <div class="service-num">01</div>
@@ -523,20 +638,9 @@
       <div class="service-desc">Our expertise in mechanical design, 3D modeling, and engineering analysis enables us to deliver customized machinery solutions for diverse industrial applications.</div>
       <div class="service-tags"><span class="stag">3D Modelling</span><span class="stag">Analysis</span><span class="stag">Industrial Design</span></div>
     </div>
-    <!-- <div class="service-card visible reveal" data-cat="arch">
-      <div class="service-num">04</div>
-      <div class="service-name">2D & 3D Layout Design</div>
-      <div class="service-desc">Comprehensive floor plans, site layouts, and 3D spatial designs for residential and commercial buildings across all scales.</div>
-      <div class="service-tags"><span class="stag">Floor Plans</span><span class="stag">Site Plans</span><span class="stag">3D Layouts</span></div>
-    </div> -->
-    <!-- <div class="service-card visible reveal" data-cat="arch">
-      <div class="service-num">05</div>
-      <div class="service-name">MEP Design</div>
-      <div class="service-desc">Detailed mechanical, electrical, and plumbing system design integrated with architectural plans for code-compliant, efficient buildings.</div>
-      <div class="service-tags"><span class="stag">Plumbing</span><span class="stag">Electrical</span><span class="stag">HVAC</span></div>
-    </div> -->
+   -->
 
-    <div class="service-card visible reveal" data-cat="arch">
+    <!-- <div class="service-card visible reveal" data-cat="arch">
       <div class="service-num">05</div>
       <div class="service-name">Automtion Design Services - SPM</div>
       <div class="service-desc">From concept to manufacturing, we deliver high-quality equipment designs tailored to meet specific process and operational requirements.</div>
@@ -560,17 +664,17 @@
       <div class="service-desc">Accurate BOM creation, GD&T annotation, assembly instructions, and technical documentation packages ready for manufacturing.</div>
       <div class="service-tags"><span class="stag">BOM</span><span class="stag">GD&amp;T</span><span class="stag">Tech Docs</span></div>
     </div>
-    <div class="service-card visible reveal" data-cat="eng">
+    <div class="service-card visible reveal" data-cat="eng"> -->
       <!-- <div class="service-num"></div>
       <div class="service-name"></div>
       <div class="service-desc"></div>
       <div class="service-tags"><span class="stag"></span><span class="stag">&amp;</span><span class="stag"></span></div> -->
-    </div>
+    <!-- </div>
   </div>
-</section>
+</section> -->
 
 <!-- INDUSTRIES -->
-<section id="industries">
+<!-- <section id="industries">
   <div class="ind-header-row">
     <div>
       <span class="section-tag">Sectors We Serve</span>
@@ -605,22 +709,12 @@
     <div class="ind-sub">Jigs, fixtures & robotics</div>
   </div>
 
-  <!-- <div class="industry-card reveal">
-    <div class="ind-icon-wrap"><i class="fa-solid fa-house"></i></div>
-    <div class="ind-name">Residential</div>
-    <div class="ind-sub">Homes, villas & apartments</div>
-  </div>
 
-  <div class="industry-card reveal">
-    <div class="ind-icon-wrap"><i class="fa-solid fa-building"></i></div>
-    <div class="ind-name">Commercial</div>
-    <div class="ind-sub">Offices, retail & institutions</div>
-  </div> -->
 </div>
-</section>
+</section> -->
 
 <!-- PROCESS -->
-<section id="process">
+<!-- <section id="process">
   <div class="section-header">
     <span class="section-tag">How We Work</span>
     <h2 class="section-title">OUR PROCESS</h2>
@@ -653,10 +747,10 @@
       <div class="step-desc">Final file handover in your required format, with post-delivery support included.</div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- WHY US -->
-<section id="why">
+<!-- <section id="why">
   <div class="why-grid">
     <div>
       <span class="section-tag">Why Choose Us</span>
@@ -692,35 +786,12 @@
         </div>
       </div>
     </div>
-    <!-- <div>
-      <div class="metrics-panel">
-        <div class="metrics-panel-title">Performance Metrics</div>
-        <div class="metric-bar">
-          <div class="metric-label"><span>On-Time Delivery</span><span class="metric-val">97%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="97"></div></div>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-label"><span>Client Retention Rate</span><span class="metric-val">94%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="94"></div></div>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-label"><span>First-Pass Approval</span><span class="metric-val">88%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="88"></div></div>
-        </div>
-        <div class="metric-bar">
-          <div class="metric-label"><span>Engineering Accuracy</span><span class="metric-val">99.5%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="99.5"></div></div>
-        </div>
-        <div class="tools-grid">
-          <span class="stag">SolidWorks</span><span class="stag">AutoCAD</span><span class="stag">CATIA</span><span class="stag">Revit</span><span class="stag">ANSYS</span><span class="stag">3ds Max</span><span class="stag">SketchUp</span><span class="stag">NX Unigraphics</span>
-        </div>
-      </div>
-    </div> -->
+ 
   </div>
-</section>
+</section> -->
 
 <!-- TESTIMONIALS -->
-<section id="testimonials">
+<!-- <section id="testimonials">
   <div class="section-header" style="text-align:center;">
     <span class="section-tag">Client Voices</span>
     <h2 class="section-title">WHAT THEY SAY</h2>
@@ -763,10 +834,10 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- CONTACT -->
-<section id="contact">
+<!-- <section id="contact">
   <div class="section-header">
     <span class="section-tag">Let's Build Together</span>
     <h2 class="section-title">GET IN<br>TOUCH</h2>
@@ -848,13 +919,7 @@
               <option>Machine building</option>
               <option>Others</option>
             </optgroup>
-            <!-- <optgroup label="Architectural Services">
-              <option>2D & 3D Layout Design</option>
-              <option>Plumbing & Electrical (MEP)</option>
-              <option>Structural Design</option>
-              <option>Interior Design</option>
-              <option>Elevation Design</option>
-            </optgroup> -->
+           
             <option>Multiple / Not Sure</option>
           </select>
         </div>
@@ -866,10 +931,10 @@
       </div>
     </form>
   </div>
-</section>
+</section> -->
 
 <!-- FOOTER -->
-<footer>
+<!-- <footer>
   <div class="footer-grid">
     <div>
       <div class="footer-logo"><img class="TCC-logo" src="TCC-logo.jpeg" alt="The CAD Company"></div>
@@ -882,13 +947,7 @@
       <a href="#services">Product Development</a>
       <a href="#services">Documentation</a>
     </div>
-    <!-- <div class="footer-col">
-      <h4>Architectural</h4>
-      <a href="#services">2D/3D Layout</a>
-      <a href="#services">MEP Design</a>
-      <a href="#services">Structural</a>
-      <a href="#services">Interior & Elevation</a>
-    </div> -->
+    
     <div class="footer-col">
       <h4>Company</h4>
       <a href="#about">About Us</a>
@@ -901,9 +960,9 @@
     <p>© 2025 The CAD Company. Chennai, Tamil Nadu. All rights reserved.</p>
     <p>Design the Future.</p>
   </div>
-</footer>
+</footer> -->
 
-<script>
+<!-- <script>
 // Page Loader
 window.addEventListener('load', () => {
   setTimeout(() => { document.getElementById('loader').classList.add('done'); }, 1200);
@@ -1019,6 +1078,157 @@ window.addEventListener('scroll', () => {
   })
 
 
+</script> -->
+
+
+
+
+
+
+
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="#home"><span class="brand-mark"><img src="./TCC-logo.jpeg"/></span>The Cad Company</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#industries">Industries</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="#contact">Get a Quote</a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div class="grid-bg"></div>
+  <div class="container hero-content">
+    <div class="eyebrow"><i></i> Engineering & Automationsss</div>
+    <h1>BUILDING<br>SMARTER <span>MACHINES.</span></h1>
+    <p class="hero-copy">SPM Services delivers practical engineering and design support for machinery, automation, jigs, fixtures, reverse engineering and manufacturing documentation.</p>
+    <div class="hero-actions"><a class="btn-primary" href="#contact">Start a Project</a><a class="btn-secondary" href="#services">Explore Services</a></div>
+    <div class="hero-meta">
+      <div class="meta"><strong>Design → Detail</strong><span>From concept to production-ready files</span></div>
+      <div class="meta"><strong>Precision First</strong><span>Structured engineering workflows</span></div>
+      <div class="meta"><strong>Chennai</strong><span>Serving industrial requirements</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+ <div class="container about-grid">
+  <div class="reveal">
+   <div class="kicker">01 / About SPM Services</div>
+   <h2>ENGINEERING<br>THAT MOVES<br>PRODUCTION.</h2>
+   <p style="margin-top:25px">SPM Services is positioned around the engineering needs of industrial and automation projects — combining design thinking, detailed CAD work and practical manufacturing requirements in one workflow.</p>
+   <div class="feature-list">
+    <div class="feature"><b>01</b><div><h3>Engineering-first thinking</h3><p>Requirements, constraints and real-world application guide the design process.</p></div></div>
+    <div class="feature"><b>02</b><div><h3>Detail-oriented execution</h3><p>2D drafting, 3D modelling, assemblies and technical documentation are developed with precision.</p></div></div>
+    <div class="feature"><b>03</b><div><h3>Built for collaboration</h3><p>Structured reviews and clear deliverables keep projects aligned from brief to handover.</p></div></div>
+   </div>
+  </div>
+  <div class="blueprint reveal" aria-label="SPM engineering blueprint visual">
+    <div class="machine"></div><div class="dim one"></div><div class="dim two"></div>
+  </div>
+ </div>
+</section>
+
+<section class="services" id="services">
+ <div class="container">
+  <div class="section-head reveal"><div><div class="kicker">02 / What We Do</div><h2>CORE<br>SERVICES</h2></div><p class="section-intro">A focused engineering service stack for machinery, automation and product-development requirements.</p></div>
+  <div class="services-grid">
+   <article class="card reveal"><div class="card-num">01</div><h3>Design Support</h3><p>Concept sketches, 2D drafting, precise 3D modelling, assemblies and manufacturing drawings.</p><div class="tags"><span class="tag">2D Drafting</span><span class="tag">3D Modelling</span><span class="tag">Assemblies</span></div></article>
+   <article class="card reveal"><div class="card-num">02</div><h3>Reverse Engineering</h3><p>Recreate physical components into accurate digital models using measurement, scanning and parametric modelling techniques.</p><div class="tags"><span class="tag">3D Scanning</span><span class="tag">Point Cloud</span><span class="tag">CAD Recreation</span></div></article>
+   <article class="card reveal"><div class="card-num">03</div><h3>Plant Design</h3><p>Industrial plant layouts designed around efficient workflow, practical engineering and optimized space utilization.</p><div class="tags"><span class="tag">Layout</span><span class="tag">Workflow</span></div></article>
+   <article class="card reveal"><div class="card-num">04</div><h3>Machinery Design</h3><p>Customized machinery solutions supported by mechanical design, 3D modelling and engineering analysis.</p><div class="tags"><span class="tag">Machine Design</span><span class="tag">Analysis</span></div></article>
+   <article class="card reveal"><div class="card-num">05</div><h3>SPM & Automation</h3><p>Equipment concepts and designs tailored to specific process and operational requirements, from concept toward manufacturing.</p><div class="tags"><span class="tag">Automation</span><span class="tag">SPM</span></div></article>
+   <article class="card reveal"><div class="card-num">06</div><h3>Jig & Fixture Design</h3><p>Fixtures and tooling that support accurate positioning, repeatability and efficient machining, welding, assembly and inspection.</p><div class="tags"><span class="tag">Assembly</span><span class="tag">Welding</span><span class="tag">Inspection</span></div></article>
+   <article class="card reveal"><div class="card-num">07</div><h3>3D Modelling</h3><p>Detailed 3D models for visualization, analysis, optimization and manufacturing preparation.</p><div class="tags"><span class="tag">CAD</span><span class="tag">Optimization</span></div></article>
+   <article class="card reveal"><div class="card-num">08</div><h3>Engineering Documentation</h3><p>BOM creation, GD&amp;T annotation, assembly instructions and technical documentation packages.</p><div class="tags"><span class="tag">BOM</span><span class="tag">GD&amp;T</span><span class="tag">Tech Docs</span></div></article>
+   <article class="card reveal"><div class="card-num">09</div><h3>Product Development</h3><p>Engineering support for taking a product or machine concept through design development and documentation.</p><div class="tags"><span class="tag">Development</span><span class="tag">Prototype</span></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="industries" id="industries">
+ <div class="container">
+  <div class="section-head reveal"><div><div class="kicker">03 / Application Areas</div><h2>INDUSTRIES<br>WE SUPPORT</h2></div><p class="section-intro">Engineering services aligned with sectors where precision, reliability and practical design matter.</p></div>
+  <div class="ind-grid">
+   <div class="ind reveal"><div class="ind-num">01</div><h3>Automotive</h3><p>Components, machinery and production-support design.</p></div>
+   <div class="ind reveal"><div class="ind-num">02</div><h3>Aerospace</h3><p>Structural and engineering design support.</p></div>
+   <div class="ind reveal"><div class="ind-num">03</div><h3>Industrial</h3><p>Machine and equipment design requirements.</p></div>
+   <div class="ind reveal"><div class="ind-num">04</div><h3>Automation</h3><p>Jigs, fixtures, SPMs and robotics-oriented solutions.</p></div>
+ </div>
+ </div>
+</section>
+
+<section class="process" id="process">
+ <div class="container">
+  <div class="section-head reveal"><div><div class="kicker">04 / How We Work</div><h2>A CLEAR<br>WORKFLOW.</h2></div><p class="section-intro">A structured process keeps requirements, revisions and deliverables visible at every stage.</p></div>
+  <div class="process-grid">
+   <div class="step reveal"><div class="step-num">01</div><h3>Discovery</h3><p>Understand requirements, scope, constraints and timelines.</p></div>
+   <div class="step reveal"><div class="step-num">02</div><h3>Planning</h3><p>Define milestones, deliverables, team requirements and estimate.</p></div>
+   <div class="step reveal"><div class="step-num">03</div><h3>Design</h3><p>Develop engineering work using structured CAD workflows.</p></div>
+   <div class="step reveal"><div class="step-num">04</div><h3>Review</h3><p>Collaborate on feedback and revisions before finalization.</p></div>
+   <div class="step reveal"><div class="step-num">05</div><h3>Delivery</h3><p>Hand over final files in the required format with support.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="container contact-grid">
+  <div class="contact-copy reveal">
+   <div class="kicker">05 / Start a Conversation</div>
+   <h2>HAVE A MACHINE<br>TO BUILD?</h2>
+   <p>Share your drawing, concept or project requirement. Tell us what you need designed and we can discuss the next engineering step.</p>
+   <div class="contact-details">
+    <div class="detail"><small>Location</small><div>No 3, Kubera Ganapathy Street, Mathiyalagan Nagar, Padi, Chennai, Tamil Nadu, India</div></div>
+    <div class="detail"><small>Phone</small><a href="tel:+919345888899">+91 93458 88899</a></div>
+    <div class="detail"><small>Email</small><a href="mailto:admin@thecadcompany.in">admin@thecadcompany.in</a></div>
+    <div class="detail"><small>Working Hours</small><div>Mon – Sat: 9:00 AM – 7:00 PM IST</div></div>
+   </div>
+  </div>
+  <form class="form reveal" id="contactForm">
+   <div class="row"><div class="field"><label>Name</label><input required placeholder="Your name"></div><div class="field"><label>Email</label><input type="email" required placeholder="you@company.com"></div></div>
+   <div class="row"><div class="field"><label>Phone</label><input required placeholder="+91 XXXXX XXXXX"></div><div class="field"><label>Company</label><input placeholder="Company name"></div></div>
+   <div class="field"><label>Service</label><select><option value="">Select a service</option><option>SPM & Automation</option><option>Machinery Design</option><option>Jig & Fixture Design</option><option>Reverse Engineering</option><option>3D Modelling</option><option>Design Support</option><option>Plant Design</option><option>Engineering Documentation</option><option>Product Development</option></select></div>
+   <div class="field"><label>Project Details</label><textarea placeholder="Describe your requirement, drawing status, timeline and deliverables..."></textarea></div>
+   <button class="btn-primary submit" type="submit">Send Enquiry →</button>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-top">
+   <div class="footer-brand"><a class="brand" href="#home"><span class="brand-mark"><img src="./TCC-logo.jpeg"/></span>The Cad Company</a><p>Engineering and design support for machinery, automation, SPMs, jigs & fixtures and industrial projects.</p></div>
+   <div class="footer-links"><a href="#about">About</a><a href="#services">Services</a><a href="#process">Process</a><a href="#contact">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>© <span id="year"></span>The Cad Company. All rights reserved.</p><p>Engineering • Automation • Design</p></div>
+ </div>
+</footer>
+<button id="top" title="Back to top">↑</button>
+
+<script>
+const menu=document.getElementById('menu'), links=document.getElementById('navLinks');
+menu.addEventListener('click',()=>links.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');observer.unobserve(e.target)}})
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.getElementById('contactForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const btn=e.target.querySelector('button');
+ btn.textContent='ENQUIRY READY ✓';
+ btn.disabled=true;
+ setTimeout(()=>{btn.textContent='SEND ENQUIRY →';btn.disabled=false;e.target.reset()},2200);
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('top').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
+
+
 </body>
 </html>
